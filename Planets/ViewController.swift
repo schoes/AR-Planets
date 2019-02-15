@@ -19,6 +19,22 @@ class ViewController: UIViewController {
     }
     override func viewDidAppear(_ animated: Bool) {
         let sun = planet(geometry: SCNSphere(radius: 0.35), diffuse: UIImage(named: "sun")!, specular: nil, emission: nil, normal: nil, position:  SCNVector3(0,0,-3))
+        let earthCenterPoint = SCNNode();
+        earthCenterPoint.position = sun.position
+        let venusCenterPoint = SCNNode();
+        venusCenterPoint.position = sun.position
+        let mercuryCenterPoint = SCNNode();
+        mercuryCenterPoint.position = sun.position
+        let marsCenterPoint = SCNNode();
+        marsCenterPoint.position = sun.position
+        let jupiterCenterPoint = SCNNode();
+        jupiterCenterPoint.position = sun.position
+        let saturnCenterPoint = SCNNode();
+        saturnCenterPoint.position = sun.position
+        let neptuneCenterPoint = SCNNode();
+        neptuneCenterPoint.position = sun.position
+        let uranusCenterPoint = SCNNode();
+        uranusCenterPoint.position = sun.position
         
         let venus = planet(geometry: SCNSphere(radius: 0.1), diffuse: UIImage(named: "venus")! ,specular: nil,emission:UIImage(named: "venus atmos"), normal: nil, position:  SCNVector3(0.7,0,0))
         let mercury = planet(geometry: SCNSphere(radius: 0.05), diffuse: UIImage(named: "mercury")! ,specular: nil,emission:nil, normal: nil, position:  SCNVector3(0.5,0,0))
@@ -30,21 +46,45 @@ class ViewController: UIViewController {
         let uranus = planet(geometry: SCNSphere(radius: 0.22), diffuse: UIImage(named: "uranus")! ,specular: nil,emission:nil, normal: nil, position:  SCNVector3(3.5,0,0))
         let neptune = planet(geometry: SCNSphere(radius: 0.22), diffuse: UIImage(named: "neptune")! ,specular: nil,emission:nil, normal: nil, position:  SCNVector3(4.5,0,0))
     
-        sun.addChildNode(earth)
-        sun.addChildNode(venus)
-        sun.addChildNode(mercury)
-        sun.addChildNode(mars)
-        sun.addChildNode(jupiter)
-        sun.addChildNode(saturn)
-        sun.addChildNode(uranus)
-        sun.addChildNode(neptune)
-        
         let earthRotation = SCNAction.repeatForever(SCNAction.rotateBy(x: 0, y: CGFloat(360.degreesToRadians), z: 0, duration: 10))
-        let sunRotation = SCNAction.repeatForever(SCNAction.rotateBy(x: 0, y: CGFloat(360.degreesToRadians), z: 0, duration: 20))
+        let venusRotation = SCNAction.repeatForever(SCNAction.rotateBy(x: 0, y: CGFloat(360.degreesToRadians), z: 0, duration:12))
+        let mercuryRotation = SCNAction.repeatForever(SCNAction.rotateBy(x: 0, y: CGFloat(360.degreesToRadians), z: 0, duration: 11))
+        let marsRotation = SCNAction.repeatForever(SCNAction.rotateBy(x: 0, y: CGFloat(360.degreesToRadians), z: 0, duration: 9))
+        let jupiterRotation = SCNAction.repeatForever(SCNAction.rotateBy(x: 0, y: CGFloat(360.degreesToRadians), z: 0, duration: 7))
+        let saturnRotation = SCNAction.repeatForever(SCNAction.rotateBy(x: 0, y: CGFloat(360.degreesToRadians), z: 0, duration: 6))
+        let uranusRotation = SCNAction.repeatForever(SCNAction.rotateBy(x: 0, y: CGFloat(360.degreesToRadians), z: 0, duration: 5))
+        let neptuneRotation = SCNAction.repeatForever(SCNAction.rotateBy(x: 0, y: CGFloat(360.degreesToRadians), z: 0, duration: 4))
+        let sunRotation = SCNAction.repeatForever(SCNAction.rotateBy(x: 0, y: CGFloat(360.degreesToRadians), z: 0, duration: 8))
+        
+        earthCenterPoint.addChildNode(earth)
+        earthCenterPoint.runAction(earthRotation)
+        venusCenterPoint.addChildNode(venus)
+        venusCenterPoint.runAction(venusRotation)
+        mercuryCenterPoint.addChildNode(mercury)
+        mercuryCenterPoint.runAction(mercuryRotation)
+        marsCenterPoint.addChildNode(mars)
+        marsCenterPoint.runAction(marsRotation)
+        jupiterCenterPoint.addChildNode(jupiter)
+        jupiterCenterPoint.runAction(jupiterRotation)
+        saturnCenterPoint.addChildNode(saturn)
+        saturnCenterPoint.runAction(saturnRotation)
+        uranusCenterPoint.addChildNode(uranus)
+        uranusCenterPoint.runAction(uranusRotation)
+        neptuneCenterPoint.addChildNode(neptune)
+        neptuneCenterPoint.runAction(neptuneRotation)
+        
+
         sun.runAction(sunRotation)
         earth.runAction(earthRotation)
         
         self.sceneView.scene.rootNode.addChildNode(sun);
+        self.sceneView.scene.rootNode.addChildNode(earthCenterPoint);
+        self.sceneView.scene.rootNode.addChildNode(venusCenterPoint);
+        self.sceneView.scene.rootNode.addChildNode(mercuryCenterPoint);
+        self.sceneView.scene.rootNode.addChildNode(marsCenterPoint)
+        self.sceneView.scene.rootNode.addChildNode(jupiterCenterPoint);
+        self.sceneView.scene.rootNode.addChildNode(uranusCenterPoint);
+        self.sceneView.scene.rootNode.addChildNode(neptuneCenterPoint);
     }
     
     func planet(geometry: SCNGeometry, diffuse: UIImage, specular: UIImage?, emission: UIImage?, normal: UIImage?, position: SCNVector3) -> SCNNode {
