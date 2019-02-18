@@ -51,7 +51,7 @@ class ViewController: UIViewController {
         let neptune = planet(geometry: SCNSphere(radius: 0.22), diffuse: UIImage(named: "neptune")! ,specular: nil,emission:nil, normal: nil, position:  SCNVector3(4.5,0,0))
     
         let earthRotation = planetRotation(duration: 9)
-        let moonRotation = planetRotation(duration: 8.5)
+        let moonRotation = planetRotation(duration: 5)
         let venusRotation = planetRotation(duration: 10)
         let mercuryRotation = planetRotation(duration: 11)
         let marsRotation = planetRotation(duration: 8)
@@ -62,6 +62,7 @@ class ViewController: UIViewController {
         let sunRotation = planetRotation(duration: 15)
         
         earthCenterPoint.addChildNode(earth)
+        earthCenterPoint.addChildNode(moonCenterPoint)
         earthCenterPoint.runAction(earthRotation)
         
         moonCenterPoint.addChildNode(moon)
@@ -92,14 +93,14 @@ class ViewController: UIViewController {
         sun.runAction(sunRotation)
         earth.runAction(earthRotation)
         
-        self.sceneView.scene.rootNode.addChildNode(sun);
-        self.sceneView.scene.rootNode.addChildNode(earthCenterPoint);
-        self.sceneView.scene.rootNode.addChildNode(venusCenterPoint);
-        self.sceneView.scene.rootNode.addChildNode(mercuryCenterPoint);
+        self.sceneView.scene.rootNode.addChildNode(sun)
+        self.sceneView.scene.rootNode.addChildNode(earthCenterPoint)
+        self.sceneView.scene.rootNode.addChildNode(venusCenterPoint)
+        self.sceneView.scene.rootNode.addChildNode(mercuryCenterPoint)
         self.sceneView.scene.rootNode.addChildNode(marsCenterPoint)
-        self.sceneView.scene.rootNode.addChildNode(jupiterCenterPoint);
-        self.sceneView.scene.rootNode.addChildNode(uranusCenterPoint);
-        self.sceneView.scene.rootNode.addChildNode(neptuneCenterPoint);
+        self.sceneView.scene.rootNode.addChildNode(jupiterCenterPoint)
+        self.sceneView.scene.rootNode.addChildNode(uranusCenterPoint)
+        self.sceneView.scene.rootNode.addChildNode(neptuneCenterPoint)
     }
     
     func planet(geometry: SCNGeometry, diffuse: UIImage, specular: UIImage?, emission: UIImage?, normal: UIImage?, position: SCNVector3) -> SCNNode {
